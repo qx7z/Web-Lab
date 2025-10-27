@@ -58,12 +58,12 @@ def add_skip_pointers(postinglist):
     
     return postinglist
 
-def blocking_compression(postinglist):
-    DicStr = ""
-    for token in postinglist.key():
-        DicStr += token
-    tokenp_len = math.ceil(math.log(len(DicStr),2))
-    blocking_compressed_postinglist = {}
+# def blocking_compression(postinglist):
+#     DicStr = ""
+#     for token in postinglist.key():
+#         DicStr += token
+#     tokenp_len = math.ceil(math.log(len(DicStr),2))
+#     blocking_compressed_postinglist = {}
     
     
 

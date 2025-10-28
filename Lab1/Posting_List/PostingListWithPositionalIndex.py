@@ -424,3 +424,15 @@ if __name__ == "__main__":
     fc_compression = (1 - size_fc_file / size_original_file) * 100
     print(f"{'3.前端编码':<30} | {file3:<25} | {size_fc_file:>12} ({fc_compression:.1f}% 压缩)")
     print("="*65)
+
+    query = "python"
+    p1 = term_dictionary[query]
+
+    p2 = find_token_in_blocked_dict(query,block_string, block_meta, full_meta,4)
+
+    p3 = find_token_in_blocked_front_coded_dict(query,block_string_fc, block_meta_fc, full_meta_fc,4)
+
+    assert p1 == p2,"find_token_in_blocked_dict有误，无法从按块存储的索引中获取倒排表内容"
+    assert p1 == p3,"find_token_in_front_coded_blocked_dict有误，无法从前端编码的索引中获取倒排表内容"
+
+    print("三种索引均构建成功")

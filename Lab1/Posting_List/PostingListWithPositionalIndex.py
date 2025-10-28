@@ -435,4 +435,4 @@ if __name__ == "__main__":
     assert p1 == p2,"find_token_in_blocked_dict有误，无法从按块存储的索引中获取倒排表内容"
     assert p1 == p3,"find_token_in_front_coded_blocked_dict有误，无法从前端编码的索引中获取倒排表内容"
 
-    print("三种索引均构建成功")
+    print("三种索引均构建成功!")

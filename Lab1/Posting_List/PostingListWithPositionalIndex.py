@@ -48,6 +48,11 @@ def construct_postinglist_with_positional_index(normalized_txt_dir):
     
     print(f"一共 {len(txt_files)} 个txt文档。")
     print(f"一共 {len(postinglist.keys())} 种token。")
+    output_dir = os.path.join(os.getcwd(),"Lab1" ,"Posting_List")
+    filename_to_ID_file = "filename_to_ID.bin"
+    output_dic_path = os.path.join(output_dir,filename_to_ID_file)
+    with open(output_dic_path, "wb") as f_index:
+        pickle.dump(filename_to_ID, f_index)
 
     return filename_to_ID, postinglist
 
@@ -113,6 +118,11 @@ def load_term_dic(term_dic_path):
     with open(term_dic_path, "rb") as f_index:
         loaded_term_dictionary = pickle.load(f_index)
     return loaded_term_dictionary
+
+def load_filename_to_ID(filename_to_ID_path):
+    with open(filename_to_ID_path, "rb") as f_index:
+        loaded_filename_to_ID = pickle.load(f_index)
+    return loaded_filename_to_ID
 
 def compress_as_string(term_dict):
     """
@@ -368,8 +378,8 @@ def get_deep_sizeof(o, ids):
 if __name__ == "__main__":
     normalized_txt_dir = os.path.join(os.getcwd(),"Lab1" ,"XML_Parsing_And_Normalization","Normalized_txt_files" )
     filename_to_ID, postinglist = construct_postinglist_with_positional_index(normalized_txt_dir)
-    postinglist_with_skip_pointers = add_skip_pointers(postinglist)
-    term_dictionary = separate_index_and_postings_with_df_in_memory(postinglist_with_skip_pointers, "postings_df_mem.bin","term_dictionary.pkl")
+    # postinglist_with_skip_pointers = add_skip_pointers(postinglist)
+    term_dictionary = separate_index_and_postings_with_df_in_memory(postinglist, "postings_df_mem.bin","term_dictionary.pkl")
 
     block_string, block_meta, full_meta = compress_with_blocking(term_dictionary, k=4)
     blocking_structure_to_save = (block_string, block_meta, full_meta)

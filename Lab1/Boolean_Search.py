@@ -132,7 +132,7 @@ if __name__ == "__main__":
     filename_to_ID_file = "filename_to_ID.bin"
     term_dic = load_term_dic(os.path.join(postinglist_dir,index_file))
     filename_to_ID = load_filename_to_ID(os.path.join(postinglist_dir,filename_to_ID_file))
-    # 5.1 query1
+    # 5.A.1 query1
     query_terms = ["system", "program","python"]
 
     print(f"\n执行查询: '{' AND '.join(query_terms)}'")
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     print(f"执行时间: {duration2:.2f} 微秒 (μs)")
 
 
-    # 5.1 query2
+    # 5.A.1 query2
     query_terms = ["next","paper","apples"]
 
     print(f"\n执行查询: '{' AND '.join(query_terms)}'")
@@ -217,7 +217,7 @@ if __name__ == "__main__":
     print(f"最终结果: {[item[0] for item in final_result2]}")
     print(f"执行时间: {duration2:.2f} 微秒 (μs)")
 
-    # 5.1 query3
+    # 5.A.1 query3
     query_terms = ["next","paper","apples"]
 
     print(f"\n执行查询: '{' OR '.join(query_terms)}'")
@@ -273,7 +273,7 @@ if __name__ == "__main__":
     print(f"最终结果: {len(final_result2)}")
     print(f"执行时间: {duration2:.2f} 微秒 (μs)")
 
-    #5.2
+    #5.A.2
     block_string, block_meta, full_meta = compress_with_blocking(term_dic, k=4)
     block_string_fc, block_meta_fc, full_meta_fc = compress_blocking_with_front_coding(term_dic, k=4)
     query_terms = ["system","python","next","paper","apple","program"]
@@ -317,7 +317,7 @@ if __name__ == "__main__":
     print(f"总耗时: {duration_original:.6f} 秒")
     print(f"平均每次词项查找耗时: {avg_time_original:.2f} 纳秒 (ns)")
 
-    # 5.3
+    # 5.A.3
     phrase = "weather permit"
 
     terms = phrase.split()
@@ -352,7 +352,7 @@ if __name__ == "__main__":
     # print(final_docs)
     print(f"前7个文档名为{[reverse_dict[docID] for docID in final_docs[:7]]}")
 
-    # 5.4
+    # 5.A.4
     query_terms = [("system","python"),("next","paper"),("apple","program")]
     terms_df =[]
     p_no_skips_size = 0

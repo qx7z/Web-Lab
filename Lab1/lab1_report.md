@@ -1,6 +1,9 @@
 # Web Lab1 信息检索
 
 > `小组成员：张启轩 PB23331868 、 蒋锐 PB23331862`
+> `实验代码云盘链接：https://pan.ustc.edu.cn/share/index/6551c1505ffc4beeafed?p=1`
+>`密码：zqxjr`
+>`有效期：2026-01-31 23:59:59`
 
 ## 文档解析与规范化处理
 
@@ -38,7 +41,7 @@
         ]
         ```
         3.  **Punctuation and Number Removal**: 进一步清洗词项，移除所有完全由数字构成（如 "2023"）或完全由标点符号构成（如 "--"）的词项。代码通过正则表达式`re.fullmatch(r'[-+]?\d+(\.\d+)?', token)`来精确匹配数字，并通过`all(char in punctuation for char in token)`来识别纯标点符号。
-        4.  **词形还原 (Lemmatization)**: 使用`nltk.stem.WordNetLemmatizer`，并结合了词性标注。首先通过`nltk.pos_tag`为每个词项标注词性，然后`get_wordnet_pos`函数将NLTK的词性标签转换为WordNetLemmatizer所能理解的格式，从而进行更精确的词形还原。包含下划线 `_` 的多词短语则被特殊处理，不进行词形还原以保留其整体性。(`is_multi_word_phrase()`)
+        4.  **Lemmatization**: 使用`nltk.stem.WordNetLemmatizer`，并结合了词性标注。首先通过`nltk.pos_tag`为每个词项标注词性，然后`get_wordnet_pos`函数将NLTK的词性标签转换为WordNetLemmatizer所能理解的格式，从而进行更精确的词形还原。包含下划线 `_` 的多词短语则被特殊处理，不进行词形还原以保留其整体性。(`is_multi_word_phrase()`)
         ```py
         lemmatizer = WordNetLemmatizer()
         tokens_lemmatized = []
